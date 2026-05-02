@@ -1,11 +1,24 @@
 const mongoose = require("mongoose");
 
-const HistorySchema = new mongoose.Schema({
-  userId: String,
-  branch: String,
-  skills: String,
-  career: String,
-  date: { type: Date, default: Date.now }
+const historySchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+
+  skills: {
+    type: [String], // ✅ FIX: array of strings
+    required: true,
+  },
+
+  prediction: {
+    type: String,
+  },
+
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-module.exports = mongoose.model("History", HistorySchema);
+module.exports = mongoose.model("History", historySchema);
